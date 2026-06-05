@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>WS Benefits Info</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:       #070F1C;
+      --navy:       #0D2147;
+      --navy-mid:   #1A3A6E;
+      --blue:       #1E54B7;
+      --blue-light: #2D6FD4;
+      --accent:     #E63950;
+      --accent-dim: #FF6B7A;
+      --gold:       #F5A623;
+      --white:      #FFFFFF;
+      --off-white:  #F4F7FF;
+      --text:       #0D1F3C;
+      --muted:      #64748B;
+      --border:     #D8E2F4;
+      --card-bg:    #FFFFFF;
+      --r:          14px;
+      --r-sm:       8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--dark);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 34px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+    .nav-logo span {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-links .btn-paylocity {
+      background: var(--blue) !important;
+      color: var(--white) !important;
+      font-weight: 600 !important;
+    }
+    .nav-links .btn-paylocity:hover { background: var(--blue-light) !important; }
+
+    .lang-toggle {
+      display: flex;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 3px;
+    }
+    .lang-toggle button {
+      border: none;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      padding: 4px 13px;
+      border-radius: 16px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-toggle button.active { background: var(--accent); color: var(--white); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 24px 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-menu a:last-of-type { border-bottom: none; }
+    .mobile-lang {
+      display: flex;
+      gap: 8px;
+      padding: 14px 0 4px;
+    }
+    .mobile-lang button {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      padding: 7px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .mobile-lang button.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      background: var(--dark);
+      color: var(--white);
+      padding: 96px 28px 108px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Geometric accent shapes */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30,84,183,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -60px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(230,57,80,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #4D9FFF, #A78BFA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: var(--dark);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 15px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 0 0 0 rgba(255,255,255,0);
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,255,255,0.15);
+    }
+    .hero-cta svg { width: 16px; height: 16px; }
+
+    /* ── DIVIDER LINE ─────────────────────────────── */
+    .divider {
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--blue), #A78BFA);
+    }
+
+    /* ── RESOURCES ────────────────────────────────── */
+    .resources {
+      background: var(--off-white);
+      padding: 80px 28px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-eyebrow::before,
+    .section-eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .section-header h2 {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .section-header p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    .resource-card {
+      background: var(--white);
+      border-radius: var(--r);
+      padding: 32px 28px 28px;
+      border: 1.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .resource-card.c-blue::before  { background: var(--blue); }
+    .resource-card.c-red::before   { background: var(--accent); }
+    .resource-card.c-gold::before  { background: var(--gold); }
+    .resource-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,33,71,0.12); border-color: transparent; }
+
+    .resource-num {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .resource-card.c-blue .resource-num  { color: var(--blue); }
+    .resource-card.c-red  .resource-num  { color: var(--accent); }
+    .resource-card.c-gold .resource-num  { color: var(--gold); }
+
+    .resource-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+    }
+    .resource-card p {
+      font-size: 14px;
+      color: var(--muted);
+      flex: 1;
+      line-height: 1.65;
+    }
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      align-self: flex-start;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+    }
+    .resource-card.c-blue .resource-link  { background: #EEF4FF; color: var(--blue); }
+    .resource-card.c-red  .resource-link  { background: #FFF0F2; color: var(--accent); }
+    .resource-card.c-gold .resource-link  { background: #FFFBF0; color: #C47F00; }
+    .resource-card.c-blue .resource-link:hover  { background: var(--blue);   color: white; }
+    .resource-card.c-red  .resource-link:hover  { background: var(--accent); color: white; }
+    .resource-card.c-gold .resource-link:hover  { background: var(--gold);   color: white; }
+    .resource-link svg { width: 13px; height: 13px; }
+
+    /* ── BENEFITS ─────────────────────────────────── */
+    .benefits {
+      padding: 80px 28px 96px;
+      background: var(--white);
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* Icon accent colors per card */
+    .benefit-card { --ic: var(--blue); }
+    .benefit-card:nth-child(1)  { --ic: #1E54B7; }
+    .benefit-card:nth-child(2)  { --ic: #0F7B5A; }
+    .benefit-card:nth-child(3)  { --ic: #7E3AF2; }
+    .benefit-card:nth-child(4)  { --ic: #C47F00; }
+    .benefit-card:nth-child(5)  { --ic: #E63950; }
+    .benefit-card:nth-child(6)  { --ic: #0EA5E9; }
+    .benefit-card:nth-child(7)  { --ic: #059669; }
+    .benefit-card:nth-child(8)  { --ic: #DC6803; }
+    .benefit-card:nth-child(9)  { --ic: #7C3AED; }
+    .benefit-card:nth-child(10) { --ic: #475569; }
+
+    .benefit-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .benefit-card.open {
+      border-color: var(--ic);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .benefit-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .benefit-card.open .benefit-header { background: var(--off-white); }
+
+    .benefit-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: color-mix(in srgb, var(--ic) 12%, white);
+      transition: background 0.2s;
+    }
+    .benefit-card.open .benefit-icon-wrap { background: var(--ic); }
+    .benefit-icon-wrap svg { width: 20px; height: 20px; color: var(--ic); transition: color 0.2s; }
+    .benefit-card.open .benefit-icon-wrap svg { color: white; }
+
+    .benefit-header-text { flex: 1; min-width: 0; }
+    .benefit-header-text h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+    }
+    .benefit-header-text span {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .benefit-chevron {
+      width: 18px; height: 18px;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform 0.22s, color 0.2s;
+    }
+    .benefit-card.open .benefit-chevron { transform: rotate(180deg); color: var(--ic); }
+
+    .benefit-body {
+      display: none;
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--border);
+    }
+    .benefit-card.open .benefit-body { display: block; }
+
+    .benefit-links {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding-top: 14px;
+    }
+    .benefit-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 14px;
+      background: var(--off-white);
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .benefit-link:hover {
+      background: color-mix(in srgb, var(--ic) 10%, white);
+      border-color: color-mix(in srgb, var(--ic) 30%, white);
+      color: var(--ic);
+    }
+    .benefit-link:hover .link-arrow { color: var(--ic); }
+    .benefit-link span { flex: 1; }
+    .link-arrow { width: 14px; height: 14px; color: #CBD5E1; flex-shrink: 0; transition: color 0.15s; }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 48px 28px;
+    }
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.3px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .footer-links a:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+    footer p { font-size: 12.5px; color: rgba(255,255,255,0.3); }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 860px) {
+      .resources-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .benefits-grid  { grid-template-columns: 1fr; }
+      .nav-links, .lang-toggle { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+    @media (min-width: 520px) and (max-width: 860px) {
+      .resources-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; }
+    }
+    @media (max-width: 500px) {
+      .hero { padding: 64px 20px 80px; }
+      .resources, .benefits { padding: 56px 16px; }
+    }
+
+    /* ── LANG VISIBILITY ─────────────────────────── */
+    [data-lang="es"] { display: none; }
+    body.lang-es [data-lang="en"] { display: none; }
+    body.lang-es [data-lang="es"] { display: block; }
+    body.lang-es .resources-grid [data-lang="es"],
+    body.lang-es .benefits-grid  [data-lang="es"] { display: flex; }
+    body.lang-es .benefit-links[data-lang="es"] { display: flex; }
+    body.lang-es span[data-lang="es"],
+    body.lang-es a[data-lang="es"] { display: inline-flex; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ═══════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="https://static.wixstatic.com/media/6fdba1_4af10a66b2c34d39b30e6c918bf2f6d6~mv2.png"
+           alt="WS Benefits"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <span style="display:none;">WS Benefits</span>
+    </a>
+    <ul class="nav-links">
+      <li>
+        <a href="mailto:help@wsbenefits.info?subject=Wineshipping.com%20LLC%20Benefits%20Help%20Request" data-lang="en">Help / Ayuda</a>
+        <a href="mailto:help@wsbenefits.info?subject=Wineshipping.com%20LLC%20Benefits%20Help%20Request" data-lang="es">Ayuda / Help</a>
+      </li>
+      <li><a href="https://www.paylocity.com/login/" target="_blank" class="btn-paylocity">Paylocity</a></li>
+      <li>
+        <div class="lang-toggle">
+          <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+          <button id="btn-es" onclick="setLang('es')">ES</button>
+        </div>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="mailto:help@wsbenefits.info?subject=Wineshipping.com%20LLC%20Benefits%20Help%20Request">Help / Ayuda</a>
+    <a href="https://www.paylocity.com/login/" target="_blank">Paylocity</a>
+    <div class="mobile-lang">
+      <button id="mobile-btn-en" class="active" onclick="setLang('en')">English</button>
+      <button id="mobile-btn-es" onclick="setLang('es')">Español</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ═══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-badge" data-lang="en">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      2025 / 2026 Open Enrollment
+    </div>
+    <div class="hero-badge" data-lang="es">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      Inscripción Abierta 2025 / 2026
+    </div>
+
+    <h1 data-lang="en">Your Benefits,<br/><em>Your Choice.</em></h1>
+    <h1 data-lang="es">Tus Beneficios,<br/><em>Tu Elección.</em></h1>
+
+    <p data-lang="en">Whether you're new to Wineshipping or just looking for plan details and resources, you're in the right place. Everything you need to enroll with confidence is right here.</p>
+    <p data-lang="es">Tanto si eres nuevo en Wineshipping como si buscas recursos y detalles sobre los planes, estás en el lugar correcto. Todo lo que necesitas para inscribirte con confianza está aquí.</p>
+
+    <a href="#benefits" class="hero-cta" data-lang="en">
+      Explore Your Benefits
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#benefits" class="hero-cta" data-lang="es">
+      Explorar Beneficios
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ══ RESOURCES ══════════════════════════════════════ -->
+<section class="resources">
+  <div class="section-header">
+    <div class="section-eyebrow" data-lang="en">Get Started</div>
+    <div class="section-eyebrow" data-lang="es">Comienza Aquí</div>
+    <h2 data-lang="en">New Enrollment Resources</h2>
+    <h2 data-lang="es">Recursos para la Inscripción</h2>
+    <p data-lang="en">Tools and resources to help make your enrollment journey more rewarding.</p>
+    <p data-lang="es">Herramientas y recursos para ayudarte a que tu proceso de inscripción sea más sencillo.</p>
+  </div>
+
+  <div class="resources-grid">
+
+    <!-- Card 1: Benefits Guide -->
+    <div class="resource-card c-blue" data-lang="en">
+      <div class="resource-num">01 — Benefits Guide</div>
+      <h3>2025/2026 Benefits Guide</h3>
+      <p>Know your benefits. Review your coverage and check out what's new for the upcoming plan year.</p>
+      <a class="resource-link" href="https://www.wsbenefits.info/_files/ugd/b56a3d_48044a4dd14345f395043dd88658bad1.pdf" target="_blank">
+        Open Guide
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+    <div class="resource-card c-blue" data-lang="es">
+      <div class="resource-num">01 — Guía de Beneficios</div>
+      <h3>Guía de Beneficios 2025/2026</h3>
+      <p>Conozca sus opciones. Revise su cobertura y consulte las novedades para el próximo año de beneficios.</p>
+      <a class="resource-link" href="https://www.wsbenefits.info/_files/ugd/b56a3d_0a495e628c6f422ca56f67d5d25f3a06.pdf" target="_blank">
+        Abrir Guía
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+
+    <!-- Card 2: Video -->
+    <div class="resource-card c-red" data-lang="en">
+      <div class="resource-num">02 — Overview Video</div>
+      <h3>Benefit Program Overview Video</h3>
+      <p>A brief walkthrough of this year's benefit updates, key deadlines, and how to enroll with confidence.</p>
+      <a class="resource-link" href="https://vimeo.com/1102018479?share=copy" target="_blank">
+        Watch Now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+    <div class="resource-card c-red" data-lang="es">
+      <div class="resource-num">02 — Video Resumen</div>
+      <h3>Video con Resumen de Beneficios</h3>
+      <p>Una breve descripción de las actualizaciones de los beneficios de este año, las fechas importantes y cómo inscribirse.</p>
+      <a class="resource-link" href="https://vimeo.com/1102018954?share=copy" target="_blank">
+        Ver Ahora
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+
+    <!-- Card 3: UHC Rewards -->
+    <div class="resource-card c-gold" data-lang="en">
+      <div class="resource-num">03 — UHC Rewards</div>
+      <h3>Got UHC? Get Paid.</h3>
+      <p>With UHC Rewards, earn dollars for healthy actions — like tracking steps, logging sleep, or getting your annual checkup.</p>
+      <a class="resource-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_81329b8cfc1f464cbfe5576643f28076.pdf" target="_blank">
+        Learn How
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+    <div class="resource-card c-gold" data-lang="es">
+      <div class="resource-num">03 — UHC Rewards</div>
+      <h3>¿Tienes UHC? Cobra tu dinero.</h3>
+      <p>Con UHC Rewards, gana dinero por realizar acciones saludables — como contar pasos, registrar el sueño o hacerte un chequeo anual.</p>
+      <a class="resource-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_68b873d8276d4a398de1420eebcf0825.pdf" target="_blank">
+        Aprende Cómo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ BENEFITS ════════════════════════════════════════ -->
+<section class="benefits" id="benefits">
+  <div class="section-header">
+    <div class="section-eyebrow" data-lang="en">Plan Documents</div>
+    <div class="section-eyebrow" data-lang="es">Documentos del Plan</div>
+    <h2 data-lang="en">Coverage Information &amp; Resources</h2>
+    <h2 data-lang="es">Información y Recursos sobre la Cobertura</h2>
+    <p data-lang="en">Select a benefit below to review documents and additional information.</p>
+    <p data-lang="es">Seleccione un beneficio a continuación para ver documentos e información adicional.</p>
+  </div>
+
+  <div class="benefits-grid">
+
+    <!-- 1. Anthem Medical -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Anthem Medical / Rx</h3>
+          <h3 data-lang="es">Anthem Médico / Recetas</h3>
+          <span>EPO · PPO · HDHP</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_af9edc5ec4e440a1af64d01c331cbf11.pdf" target="_blank"><span>EPO Summary of Benefits</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_3272ba3949b548c0b66d35752d70196d.pdf" target="_blank"><span>PPO Summary of Benefits</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_fc3231da8e7540c08939cabb5dcda0dd.pdf" target="_blank"><span>HDHP Summary of Benefits</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_1e193b888b5d4a53af533ac80e22ad34.pdf" target="_blank"><span>EPO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_23f740b5ca5f4b2fae91da969f669286.pdf" target="_blank"><span>PPO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_c4f9f79ef5de4211841a71947c886063.pdf" target="_blank"><span>HDHP SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_8f5c06acac1a4c7d98b965ba7e2881f9.pdf" target="_blank"><span>Resumen de Beneficios EPO</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_93f5552a0a424378adc0352a99197abc.pdf" target="_blank"><span>Resumen de Beneficios PPO</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_d195261ca47a4a9080ee6e33416a7708.pdf" target="_blank"><span>Resumen de Beneficios HDHP</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_050595c3df3042eea903c1a171b012e8.pdf" target="_blank"><span>EPO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_b6b9c521f91b47e58e5f5fb42053af91.pdf" target="_blank"><span>PPO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_3f756a1150854523b5ff6ad7c93b0e0c.pdf" target="_blank"><span>HDHP SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Kaiser -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C8 2 5 5 5 8c0 5 7 13 7 13s7-8 7-13c0-3-2.7-6-7-6z"/>
+            <circle cx="12" cy="8" r="2.5"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Kaiser Medical / Rx</h3>
+          <h3 data-lang="es">Kaiser Médico / Recetas</h3>
+          <span>HMO Plan</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_273f89f92d744bdb8d68e7b252068aec.pdf" target="_blank"><span>HMO Summary of Benefits</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_70fdbab8da6b467a86364333ccf7af00.pdf" target="_blank"><span>HMO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_5141a7134d3245549cd1fae516d51485.pdf" target="_blank"><span>Resumen de Beneficios HMO</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_8588c2672d85415a9e06a92810d3e5d1.pdf" target="_blank"><span>HMO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. FSA -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="5" width="20" height="14" rx="2"/>
+            <line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Flexible Spending Accounts</h3>
+          <h3 data-lang="es">Cuentas de Gastos Flexibles</h3>
+          <span data-lang="en">FSA · Dependent Care · Commuter</span>
+          <span data-lang="es">FSA · Cuidado de Dependientes · Transporte</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_53b8c1c271f0409fba8d41dc3fdda7b4.pdf" target="_blank"><span>FSA &amp; Commuter Plan Overview</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_20fcd1ffced849f2b6c5fde5cedc558e.pdf" target="_blank"><span>Health Care FSA Summary</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_e6932c54e73c4bf69a675d009a36bddc.pdf" target="_blank"><span>Dependent Care FSA Summary</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_989509c1251348bb8fa62f6c619c7ba6.pdf" target="_blank"><span>Dependent Care FSA Expenses</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_890c0a85992044e9938a7026638ddf57.pdf" target="_blank"><span>Limited Purpose FSA Summary</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_c13d5e9874624c9096044144dc4baeea.pdf" target="_blank"><span>Spending Account Debit Card</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_f620ca80ea9c49e2bb63fe2534494539.pdf" target="_blank"><span>Spending Account Carryover</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_d82d003ec17c4dd0ad9ef9095e1acefd.pdf" target="_blank"><span>Commuter &amp; Parking</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_e0b99fb1a0224c099a1d4f6fd9a272de.pdf" target="_blank"><span>Resumen de Gastos Flexibles y Transporte</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://youtu.be/IUxhmD7rfRU" target="_blank"><span>Video: Descripción General de la Cuenta FSA</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. HSA -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Health Savings Account (HSA)</h3>
+          <h3 data-lang="es">Cuenta de Ahorro para la Salud (HSA)</h3>
+          <span data-lang="en">Triple tax advantage · Rolls over · Yours for life</span>
+          <span data-lang="es">Triple beneficio fiscal · Se acumula · Tuya de por vida</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://flimp.live/Alegeus_HSA" target="_blank"><span>HSA Overview Video</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_fdd6e34908d040008aaab5cc0435819a.pdf" target="_blank"><span>HSA Overview</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://youtu.be/RAhnorbLZNs" target="_blank"><span>Video General sobre HSA</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_7072271276214395913661d568c5d5b8.pdf" target="_blank"><span>Descripción General de HSA</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. HRA -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 12 20 22 4 22 4 12"/>
+            <rect x="2" y="7" width="20" height="5"/>
+            <line x1="12" y1="22" x2="12" y2="7"/>
+            <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
+            <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Anthem EPO / PPO Deductible HRA</h3>
+          <h3 data-lang="es">Anthem EPO / PPO Deducible HRA</h3>
+          <span data-lang="en">Deductible Reimbursement Benefit</span>
+          <span data-lang="es">Beneficio de Reembolso de Deducible</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_2e1c44879abb47078a4608fb8e593432.pdf" target="_blank"><span>HRA Plan Document</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_9d6645672a8f4269a871d41e09f0bb61.pdf" target="_blank"><span>Setup Direct Deposit</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_2e1c44879abb47078a4608fb8e593432.pdf" target="_blank"><span>Documento del Plan HRA</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_9d6645672a8f4269a871d41e09f0bb61.pdf" target="_blank"><span>Configurar Depósito Directo</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Dental -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C8.5 2 6 4.5 6 7c0 2 .8 3.5 2 5 .8 1 1 2 1 3s.5 4 1.5 4 1.5-2 1.5-4 .5-3 1.5-3 1.5 2 1.5 4 .5 4 1.5 4S17 21 17 20s.2-2 1-3c1.2-1.5 2-3 2-5 0-2.5-2.5-5-8-5z"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Guardian Dental</h3>
+          <h3 data-lang="es">Guardian Dental</h3>
+          <span data-lang="en">Plan Básico · Plan Plus</span>
+          <span data-lang="es">Plan Básico · Plan Plus</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_3d51b2867e3742d6864aeecaa52f1a87.pdf" target="_blank"><span>Summary of Dental Options</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_063f07ca7b8a4bef9406f2850b09daba.pdf" target="_blank"><span>Resumen de Opciones Dentales</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Vision -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">United Healthcare Vision</h3>
+          <h3 data-lang="es">Visión United Healthcare</h3>
+          <span data-lang="en">Vision coverage</span>
+          <span data-lang="es">Cobertura de visión</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_a6978bed62de4225a21f6b8e283c7dde.pdf" target="_blank"><span>Vision Summary</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_a6909404742e4b0f80e34a930fa64f11.pdf" target="_blank"><span>Resumen de Visión</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Life & Disability -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Guardian Life &amp; Disability</h3>
+          <h3 data-lang="es">Guardian Vida y Discapacidad</h3>
+          <span data-lang="en">Life · AD&amp;D · Short-Term Disability</span>
+          <span data-lang="es">Vida · AD&amp;D · Incapacidad Temporal</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_0b9643314cc14a93bc8f2b002fb395de.pdf" target="_blank"><span>Life and AD&amp;D Coverage</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_4ec7e7f5197c41f0b38f213414d8fd03.pdf" target="_blank"><span>Short-Term Disability</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_d87b0e1b78e14ee8bbdd7fe4570603ee.pdf" target="_blank"><span>Basic Life</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_b8996015c73e4c9bb7c975240b0cf27f.pdf" target="_blank"><span>Vida Básica y Voluntaria</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_5ef9ebf1c6ef4c7fa5fbc2777d67b74d.pdf" target="_blank"><span>Incapacidad Temporal</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_d87b0e1b78e14ee8bbdd7fe4570603ee.pdf" target="_blank"><span>Vida Básica</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Supplemental -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Guardian Accident, Hospital &amp; Critical Illness</h3>
+          <h3 data-lang="es">Guardian Accidentes, Hospitalización y Enf. Graves</h3>
+          <span data-lang="en">Supplemental coverage</span>
+          <span data-lang="es">Cobertura suplementaria</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_8b1c199d2a254867a865fac71ce596a5.pdf" target="_blank"><span>Accident Coverage</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_8c543de0774d4e829c7dc200b5479e0b.pdf" target="_blank"><span>Critical Illness Coverage</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_1d3e8e78ab99485799da8de09debe903.pdf" target="_blank"><span>Hospital Indemnity Coverage</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_1a7e8d5a3cda4ef5be96dc2b85a21ebb.pdf" target="_blank"><span>Cobertura por Accidente</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_f04efada1e1044ddb9892ff6b7fe3565.pdf" target="_blank"><span>Cobertura por Enfermedad Grave</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_9254988ffc03440590566a804f044c75.pdf" target="_blank"><span>Indemnización por Hospitalización</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Resources -->
+    <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Resources &amp; Important Information</h3>
+          <h3 data-lang="es">Recursos e Información Importante</h3>
+          <span data-lang="en">Notices · Rates · Contacts</span>
+          <span data-lang="es">Avisos · Tarifas · Contactos</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/b56a3d_ed9391af2ea544bb8b649115ce033fc9.pdf" target="_blank"><span>Carrier Contacts &amp; Resources</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_4d64ff9202314405bd659722e9e7cb55.pdf" target="_blank"><span>2025/2026 Employee Contributions</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_f36d3ada5b77483ab534b889d7066630.pdf" target="_blank"><span>General Plan Notices</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_67e35c8ec011438b9c34f8ed1858112f.pdf" target="_blank"><span>Medicare Part D Notice</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_431979eb667e48469e181f58584a3ce6.pdf" target="_blank"><span>COBRA Rights Notification</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/b56a3d_f5a3305808a246ff9ab7d4f913a3edb5.pdf" target="_blank"><span>Contactos e Información sobre el Plan</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_97135a3a2e32417cbf94bd4c29d0a552.pdf" target="_blank"><span>Tarifas para Empleados 2025/2026</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_3f44f5787d304cc680676270c87ab538.pdf" target="_blank"><span>Avisos Generales del Plan</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_859f89ecf2dc4b3fb37a002fd8bef5e2.pdf" target="_blank"><span>Aviso sobre la Parte D de Medicare</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_d391397305ae4aa98491a0ef0c601010.pdf" target="_blank"><span>Notificación sobre los Derechos COBRA</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">WS Benefits</div>
+    <div class="footer-links">
+      <a href="mailto:help@wsbenefits.info?subject=Wineshipping.com%20LLC%20Benefits%20Help%20Request" data-lang="en">Help / Ayuda</a>
+      <a href="mailto:help@wsbenefits.info?subject=Wineshipping.com%20LLC%20Benefits%20Help%20Request" data-lang="es">Ayuda / Help</a>
+      <a href="https://www.paylocity.com/login/" target="_blank">Paylocity</a>
+      <a href="https://www.anthem.com/find-care/" target="_blank" data-lang="en">Find a Doctor – Anthem</a>
+      <a href="https://www.anthem.com/find-care/" target="_blank" data-lang="es">Encuentra un Médico – Anthem</a>
+      <a href="https://healthy.kaiserpermanente.org/find-a-doctor" target="_blank" data-lang="en">Find a Doctor – Kaiser</a>
+      <a href="https://healthy.kaiserpermanente.org/find-a-doctor" target="_blank" data-lang="es">Encuentra un Médico – Kaiser</a>
+    </div>
+    <p data-lang="en">© 2025 Wineshipping.com LLC · Benefits information is for plan year 2025/2026</p>
+    <p data-lang="es">© 2025 Wineshipping.com LLC · La información de beneficios corresponde al año de plan 2025/2026</p>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-es', lang === 'es');
+    document.documentElement.lang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('mobile-btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('mobile-btn-es').classList.toggle('active', lang === 'es');
+    try { localStorage.setItem('wsbLang', lang); } catch(e) {}
+  }
+  try { const s = localStorage.getItem('wsbLang'); if (s === 'es') setLang('es'); } catch(e) {}
+
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  function toggleCard(card) {
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.benefit-card.open').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobile-menu');
+    const burger = document.getElementById('hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
