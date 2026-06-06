@@ -375,18 +375,25 @@
       padding: 10px 18px;
       border-radius: 8px;
       align-self: flex-start;
-      transition: background 0.15s, color 0.15s, transform 0.15s;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      -webkit-appearance: none;
+      appearance: none;
+      border: 1.5px solid transparent;
+      box-shadow: none;
+      line-height: 1;
     }
-    .resource-card.c-blue .resource-link  { background: #EEF4FF; color: var(--blue); }
-    .resource-card.c-red  .resource-link  { background: #FFF0F2; color: var(--accent); }
-    .resource-card.c-gold .resource-link  { background: #FFFBF0; color: #C47F00; }
-    .resource-card.c-blue   .resource-link:hover  { background: var(--blue);   color: white; }
-    .resource-card.c-red    .resource-link:hover  { background: var(--accent); color: white; }
-    .resource-card.c-gold   .resource-link:hover  { background: var(--gold);   color: white; }
-    .resource-card.c-purple .resource-link:hover  { background: #7E3AF2;       color: white; }
+    .resource-card.c-blue   .resource-link { background: #EEF4FF; color: var(--blue);   border-color: #B8CFFF; }
+    .resource-card.c-red    .resource-link { background: #FFF0F2; color: var(--accent); border-color: #F9C0CA; }
+    .resource-card.c-gold   .resource-link { background: #FFFBF0; color: #C47F00;       border-color: #F0D090; }
+    .resource-card.c-purple .resource-link { background: #F3F0FF; color: #7E3AF2;       border-color: #C4B5F8; }
+    .resource-card.c-blue   .resource-link:hover { background: var(--blue);   color: white; border-color: var(--blue); }
+    .resource-card.c-red    .resource-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    .resource-card.c-gold   .resource-link:hover { background: var(--gold);   color: white; border-color: var(--gold); }
+    .resource-card.c-purple .resource-link:hover { background: #7E3AF2;       color: white; border-color: #7E3AF2; }
     .resource-card.c-purple::before       { background: #7E3AF2; }
     .resource-card.c-purple .resource-num { color: #7E3AF2; }
-    .resource-card.c-purple .resource-link { background: #F3F0FF; color: #7E3AF2; }
     .resource-link svg { width: 13px; height: 13px; }
 
     /* ── VIDEO LIGHTBOX ───────────────────────────────── */
@@ -667,11 +674,11 @@
 
     <div class="hero-badge" data-lang="en">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-      2025 / 2026 Open Enrollment
+      Open Enrollment Is From June 17 - June 30
     </div>
     <div class="hero-badge" data-lang="es">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-      Inscripción Abierta 2025 / 2026
+      Inscripción Abierta: 17 al 30 de Junio
     </div>
 
     <h1 data-lang="en">Your Benefits,<br/><em>Made Simple.</em></h1>
@@ -700,7 +707,7 @@
     <div class="section-eyebrow" data-lang="es">Comienza Aquí</div>
     <h2 data-lang="en">Enrollment Resources</h2>
     <h2 data-lang="es">Recursos para la Inscripción</h2>
-    <p data-lang="en">Everything you need to navigate your benefits journey with confidence.</p>
+    <p data-lang="en" style="white-space:nowrap;">Everything you need to navigate your benefits journey with confidence.</p>
     <p data-lang="es">Herramientas y recursos para ayudarte a que tu proceso de inscripción sea más sencillo.</p>
   </div>
 
@@ -731,7 +738,7 @@
       <div class="resource-num">02 — Overview Video</div>
       <h3>Benefit Program Overview Video</h3>
       <p>A brief walkthrough of this year's benefit updates, key deadlines, and how to enroll with confidence.</p>
-      <button class="resource-link" onclick="openVideoModal('1102018479')">
+      <button class="resource-link" onclick="openVideoModal('1198809971', '45269c6cd8')">
         Watch Now
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </button>
@@ -740,7 +747,7 @@
       <div class="resource-num">02 — Video Resumen</div>
       <h3>Video con Resumen de Beneficios</h3>
       <p>Una breve descripción de las actualizaciones de los beneficios de este año, las fechas importantes y cómo inscribirse.</p>
-      <button class="resource-link" onclick="openVideoModal('1102018954')">
+      <button class="resource-link" onclick="openVideoModal('1198809971', '45269c6cd8')">
         Ver Ahora
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </button>
@@ -769,7 +776,7 @@
     <!-- Card 4: Anthem Pharmacy -->
     <div class="resource-card c-purple" data-lang="en">
       <div class="resource-num">04 — Anthem Pharmacy</div>
-      <h3>Know Your Rx Costs Before You Fill.</h3>
+      <h3>Know Your Rx Coverage Before Enrolling.</h3>
       <p>Search Anthem's drug formulary to check if your medications are covered, find lower-cost alternatives, and estimate out-of-pocket costs.</p>
       <a class="resource-link" href="https://client.formularynavigator.com/Search.aspx?siteCode=5993342623" target="_blank">
         Look Up a Drug
@@ -792,8 +799,8 @@
 <!-- ══ BENEFITS ════════════════════════════════════════ -->
 <section class="benefits" id="benefits">
   <div class="section-header">
-    <div class="section-eyebrow" data-lang="en">Plan Documents</div>
-    <div class="section-eyebrow" data-lang="es">Documentos del Plan</div>
+    <div class="section-eyebrow" data-lang="en">Plan Information</div>
+    <div class="section-eyebrow" data-lang="es">Información del Plan</div>
     <h2 data-lang="en">Coverage Information &amp; Resources</h2>
     <h2 data-lang="es">Información y Recursos sobre la Cobertura</h2>
     <p data-lang="en">Select a benefit below to review documents and additional information.</p>
@@ -854,12 +861,12 @@
       </div>
       <div class="benefit-body">
         <div class="benefit-links" data-lang="en">
-          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_273f89f92d744bdb8d68e7b252068aec.pdf" target="_blank"><span>HMO Summary of Benefits</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_70fdbab8da6b467a86364333ccf7af00.pdf" target="_blank"><span>HMO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/NCAL%20Wineshipping%202026%20DHMO%20DF%20669546%5B48%5D.pdf" target="_blank"><span>HMO Summary of Benefits</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/NCAL%20Wineshipping%202026%20DHMO%20SBC%20669546.pdf" target="_blank"><span>HMO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
         <div class="benefit-links" data-lang="es">
-          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_5141a7134d3245549cd1fae516d51485.pdf" target="_blank"><span>Resumen de Beneficios HMO</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_8588c2672d85415a9e06a92810d3e5d1.pdf" target="_blank"><span>HMO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/NCAL%20Wineshipping%202026%20DHMO%20DF%20669546%5B48%5D.pdf" target="_blank"><span>Resumen de Beneficios HMO</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/NCAL%20Wineshipping%202026%20DHMO%20SBC%20669546.pdf" target="_blank"><span>HMO SBC</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
     </div>
@@ -970,8 +977,8 @@
         <div class="benefit-header-text">
           <h3 data-lang="en">Guardian Dental</h3>
           <h3 data-lang="es">Guardian Dental</h3>
-          <span data-lang="en">Plan Básico · Plan Plus</span>
-          <span data-lang="es">Plan Básico · Plan Plus</span>
+          <span data-lang="en">Standard · Enhanced</span>
+          <span data-lang="es">Standard · Enhanced</span>
         </div>
         <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
@@ -1004,10 +1011,10 @@
       </div>
       <div class="benefit-body">
         <div class="benefit-links" data-lang="en">
-          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_a6978bed62de4225a21f6b8e283c7dde.pdf" target="_blank"><span>Vision Summary</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/SOB%20Vision%20FS.A.10.25.200.200%205MZT.pdf" target="_blank"><span>Vision Summary</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
         <div class="benefit-links" data-lang="es">
-          <a class="benefit-link" href="https://www.wsbenefits.info/_files/ugd/6fdba1_a6909404742e4b0f80e34a930fa64f11.pdf" target="_blank"><span>Resumen de Visión</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/SOB%20Vision%20FS.A.10.25.200.200%205MZT.pdf" target="_blank"><span>Resumen de Visión</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
     </div>
@@ -1072,8 +1079,34 @@
       </div>
     </div>
 
-    <!-- 10. Resources -->
+    <!-- 10. EAP -->
     <div class="benefit-card" onclick="toggleCard(this)">
+      <div class="benefit-header">
+        <div class="benefit-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <div class="benefit-header-text">
+          <h3 data-lang="en">Employee Assistance Program</h3>
+          <h3 data-lang="es">Programa de Asistencia al Empleado</h3>
+          <span data-lang="en">ComPsych · Confidential Support</span>
+          <span data-lang="es">ComPsych · Apoyo Confidencial</span>
+        </div>
+        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-links" data-lang="en">
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/eap-faq.pdf" target="_blank"><span>EAP Employee FAQ</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <div class="benefit-links" data-lang="es">
+          <a class="benefit-link" href="https://paragonrisk.github.io/wsbenefits-2026/assets/eap-faq.pdf" target="_blank"><span>Preguntas Frecuentes del PAE</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Resources -->
+    <div class="benefit-card" onclick="toggleCard(this)" style="grid-column: 1 / -1; max-width: 50%; margin: 0 auto; width: 100%;">
       <div class="benefit-header">
         <div class="benefit-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1107,32 +1140,6 @@
       </div>
     </div>
 
-    <!-- 11. EAP -->
-    <div class="benefit-card" onclick="toggleCard(this)">
-      <div class="benefit-header">
-        <div class="benefit-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-          </svg>
-        </div>
-        <div class="benefit-header-text">
-          <h3 data-lang="en">Employee Assistance Program</h3>
-          <h3 data-lang="es">Programa de Asistencia al Empleado</h3>
-          <span data-lang="en">ComPsych · Confidential Support</span>
-          <span data-lang="es">ComPsych · Apoyo Confidencial</span>
-        </div>
-        <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="benefit-body">
-        <div class="benefit-links" data-lang="en">
-          <a class="benefit-link" href="https://raw.githubusercontent.com/paragonrisk/wsbenefits-2026/main/assets/eap-faq.pdf" target="_blank"><span>EAP Employee FAQ</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <div class="benefit-links" data-lang="es">
-          <a class="benefit-link" href="https://raw.githubusercontent.com/paragonrisk/wsbenefits-2026/main/assets/eap-faq.pdf" target="_blank"><span>Preguntas Frecuentes del PAE</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1154,10 +1161,6 @@
       <a href="mailto:help@wsbenefits.info?subject=Wineshipping.com%20LLC%20Benefits%20Help%20Request" data-lang="en">Help / Ayuda</a>
       <a href="mailto:help@wsbenefits.info?subject=Wineshipping.com%20LLC%20Benefits%20Help%20Request" data-lang="es">Ayuda / Help</a>
       <a href="https://www.paylocity.com/login/" target="_blank">Paylocity</a>
-      <a href="https://www.anthem.com/find-care/" target="_blank" data-lang="en">Find a Doctor – Anthem</a>
-      <a href="https://www.anthem.com/find-care/" target="_blank" data-lang="es">Encuentra un Médico – Anthem</a>
-      <a href="https://healthy.kaiserpermanente.org/find-a-doctor" target="_blank" data-lang="en">Find a Doctor – Kaiser</a>
-      <a href="https://healthy.kaiserpermanente.org/find-a-doctor" target="_blank" data-lang="es">Encuentra un Médico – Kaiser</a>
     </div>
   </div>
 </footer>
@@ -1178,8 +1181,9 @@
     document.getElementById('mobile-menu').classList.toggle('open');
   }
 
-  function openVideoModal(vimeoId) {
-    document.getElementById('video-iframe').src = 'https://player.vimeo.com/video/' + vimeoId + '?autoplay=1&color=E63950';
+  function openVideoModal(vimeoId, hash) {
+    const h = hash ? '?h=' + hash + '&autoplay=1&color=E63950' : '?autoplay=1&color=E63950';
+    document.getElementById('video-iframe').src = 'https://player.vimeo.com/video/' + vimeoId + h;
     document.getElementById('video-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
