@@ -404,6 +404,59 @@
     .resource-link svg { width: 13px; height: 13px; }
 
     /* ── VIDEO LIGHTBOX ───────────────────────────────── */
+    /* ── FORM MODAL ──────────────────────────────── */
+    .form-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(7,15,28,0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .form-modal.active { display: flex; }
+    .form-modal-inner {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      height: 90vh;
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+    }
+    .form-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: rgba(0,0,0,0.06);
+      border: none;
+      color: var(--navy);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 9px;
+      border-radius: 50%;
+      z-index: 10;
+      transition: background 0.15s;
+    }
+    .form-modal-close:hover { background: rgba(0,0,0,0.14); }
+    .form-modal-inner iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      flex: 1;
+    }
+    @media (max-width: 640px) {
+      .form-modal { padding: 0; }
+      .form-modal-inner { max-width: 100%; height: 100vh; border-radius: 0; }
+    }
+
     .video-modal {
       display: none;
       position: fixed;
@@ -985,10 +1038,12 @@
       </div>
       <div class="benefit-body">
         <div class="benefit-links" data-lang="en">
+          <button class="benefit-link" onclick="openFormModal('https://form.jotform.com/261565707671060')"><span>File for Deductible Reimbursement</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
           <a class="benefit-link" href="assets/HRA-Plan-Document-2526-EN.pdf" target="_blank"><span>HRA Plan Document</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <a class="benefit-link" href="assets/Setup-Direct-Deposit-2526-EN.pdf" target="_blank"><span>Setup Direct Deposit</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
         <div class="benefit-links" data-lang="es">
+          <button class="benefit-link" onclick="openFormModal('https://form.jotform.com/261565038699067')"><span>Presentar Reembolso de Deducible</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
           <a class="benefit-link" href="assets/HRA-Plan-Document-2526-ES.pdf" target="_blank"><span>Documento del Plan HRA</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <a class="benefit-link" href="assets/Setup-Direct-Deposit-2526-ES.pdf" target="_blank"><span>Configurar Depósito Directo</span><svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
@@ -1218,6 +1273,14 @@
   </div>
 </div>
 
+<!-- ══ FORM MODAL ══════════════════════════════════════ -->
+<div class="form-modal" id="form-modal" onclick="handleFormModalClick(event)">
+  <div class="form-modal-inner">
+    <button class="form-modal-close" onclick="closeFormModal()" aria-label="Close form">&#xd7;</button>
+    <iframe id="form-iframe" src="" title="HRA Reimbursement Form"></iframe>
+  </div>
+</div>
+
 <!-- ══ FOOTER ══════════════════════════════════════════ -->
 <footer>
   <div class="footer-inner">
@@ -1261,8 +1324,22 @@
     if (e.target === document.getElementById('video-modal')) closeVideoModal();
   }
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeVideoModal();
+    if (e.key === 'Escape') { closeVideoModal(); closeFormModal(); }
   });
+
+  function openFormModal(url) {
+    document.getElementById('form-iframe').src = url;
+    document.getElementById('form-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFormModal() {
+    document.getElementById('form-iframe').src = '';
+    document.getElementById('form-modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function handleFormModalClick(e) {
+    if (e.target === document.getElementById('form-modal')) closeFormModal();
+  }
 
   function toggleCard(card) {
     const wasOpen = card.classList.contains('open');
