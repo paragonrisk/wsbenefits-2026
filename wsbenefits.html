@@ -313,7 +313,11 @@
       max-width: 500px;
       margin: 0 auto;
     }
-    .benefits .section-header p { max-width: 660px; white-space: nowrap; }
+    .benefits .section-header p { max-width: 660px; }
+    @media (min-width: 640px) {
+      .benefits .section-header p { white-space: nowrap; }
+      .resources .section-header p { white-space: nowrap; }
+    }
 
     .resources-grid {
       display: grid;
@@ -620,6 +624,20 @@
     @media (max-width: 500px) {
       .hero { padding: 64px 20px 80px; }
       .resources, .benefits { padding: 56px 16px; }
+
+      /* Bump up text for mobile readability */
+      .hero-badge                { font-size: 13px; }
+      .section-eyebrow           { font-size: 13px; }
+      .section-header p          { font-size: 17px; }
+      .benefit-header-text h3    { font-size: 16px; }
+      .benefit-header-text span  { font-size: 13.5px; }
+      .benefit-link              { font-size: 15px; padding: 13px 14px; }
+      .resource-num              { font-size: 12.5px; }
+      .resource-card h3          { font-size: 18px; }
+      .resource-card p           { font-size: 15px; }
+      .resource-link             { font-size: 14.5px; }
+      .footer-links a            { font-size: 14px; }
+      footer p                   { font-size: 13px; }
     }
 
     /* ── LANG VISIBILITY ─────────────────────────── */
@@ -710,7 +728,7 @@
     <div class="section-eyebrow" data-lang="es">Comienza Aquí</div>
     <h2 data-lang="en">Enrollment Resources</h2>
     <h2 data-lang="es">Recursos para la Inscripción</h2>
-    <p data-lang="en" style="white-space:nowrap;">Everything you need to navigate your benefits journey with confidence.</p>
+    <p data-lang="en">Everything you need to navigate your benefits journey with confidence.</p>
     <p data-lang="es">Todo lo que necesitas para navegar tu proceso de beneficios con confianza.</p>
   </div>
 
@@ -1109,7 +1127,7 @@
     </div>
 
     <!-- 11. Resources -->
-    <div class="benefit-card" onclick="toggleCard(this)" style="grid-column: 1 / -1; max-width: 50%; margin: 0 auto; width: 100%;">
+    <div class="benefit-card" onclick="toggleCard(this)">
       <div class="benefit-header">
         <div class="benefit-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
