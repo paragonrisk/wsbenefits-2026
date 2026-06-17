@@ -2,7 +2,7 @@
   "_comment": "Per-client bot configuration. Each key is a botId passed from the widget config. Add a new entry for each client site.",
 
   "wineshipping": {
-    "name": "Wineshipping Benefits Assistant",
+    "name": "Aimee from Wineshipping.com",
     "planYear": "2526/2627",
     "helpEmail": "help@wsbenefits.info",
     "siteUrl": "https://wsbenefits.github.io/wineshipping",
