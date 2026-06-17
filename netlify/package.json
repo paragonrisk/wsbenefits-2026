@@ -1,0 +1,8 @@
+{
+  "name": "wsbenefits-chat-functions",
+  "version": "1.0.0",
+  "description": "Netlify serverless functions for WS Benefits Hub chatbot",
+  "engines": {
+    "node": ">=18"
+  }
+}
