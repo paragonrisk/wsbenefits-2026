@@ -14,6 +14,17 @@
 
 const AIRTABLE_TABLE = 'Chat Conversations';
 
+// ─── Knowledge Base ───────────────────────────────────────────────────────────
+const fs = require('fs');
+const path = require('path');
+
+let KNOWLEDGE_BASE = '';
+try {
+  KNOWLEDGE_BASE = fs.readFileSync(path.join(__dirname, 'knowledge-base.md'), 'utf8');
+} catch (e) {
+  console.warn('knowledge-base.md not found — Aimee will work without pre-loaded content.');
+}
+
 // ─── System Prompt ────────────────────────────────────────────────────────────
 
 function buildSystemPrompt(botConfig) {
@@ -110,10 +121,16 @@ Only answer when you can support the answer from approved source material. If co
 Members have been instructed not to share personal health information, SSNs, or other sensitive PII through this chat. If a member shares such information, acknowledge their question but do not repeat or store the sensitive details in your response.
 
 ─────────────────────────────────────────────────────────────────
-DOCUMENT INVENTORY — ${botConfig.name} (Plan Year: ${botConfig.planYear || 'current'})
-The following documents are available on this benefits site. Use these when answering questions.
+KNOWLEDGE BASE — ${botConfig.name} (Plan Year: ${botConfig.planYear || 'current'})
+The following is the complete, structured benefits knowledge base extracted from official plan documents.
+Use this as your primary source of truth when answering questions.
 ─────────────────────────────────────────────────────────────────
-${docInventory || '  (No document inventory configured — escalate all specific document questions to the benefits team.)'}
+${KNOWLEDGE_BASE || '  (Knowledge base not loaded — escalate all specific plan questions to the benefits team.)'}
+
+─────────────────────────────────────────────────────────────────
+DOCUMENT LINKS — members can open these PDFs directly on the site:
+─────────────────────────────────────────────────────────────────
+${docInventory || '  (No document inventory configured.)'}
 
 HELP EMAIL: ${botConfig.helpEmail || 'help@wsbenefits.info'}
 SITE URL: ${botConfig.siteUrl || ''}
